@@ -20,7 +20,7 @@ jobs:
 
       - name: Wait for Child Workflows
         run: |
-           sleep 300
+           sleep 10
 
       # Continued from the parent workflow
 
