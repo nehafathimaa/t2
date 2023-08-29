@@ -16,12 +16,10 @@ jobs:
         run: |
           # Install Maven here
           sudo apt update
-          audo apt install maven -y
-
+          sudo apt install maven -y
       - name: Set Maven Output
         id: maven-output
         run: |
-          echo "::set-output name=installed::true"
-
+          echo "installed=true" >> $GITHUB_ENV
     outputs:
       installed: ${{ steps.maven-output.outputs.installed }}
