@@ -10,7 +10,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-
       - name: Trigger Maven Installation Workflow
         uses: peter-evans/repository-dispatch@v2
         with:
@@ -20,13 +19,14 @@ jobs:
 
       - name: Wait for Child Workflows
         run: |
-           sleep 10
-
-      # Continued from the parent workflow
+          sleep 10
 
       - name: Collect Child Workflow Outputs
+        id: maven
         run: |
-          echo "Child Maven Installed: ${{ fromJson(steps.maven.outputs.installed) }}"
+          echo "::set-output name=installed::${{ steps.trigger.outputs.response }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Summary Report
         run: |
