@@ -15,7 +15,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.PAT_TOKEN }}  # Personal Access Token with appropriate permissions
-          repository: nehafathimaa/t2  # Repository where child workflows are defined
+          repository: nehafathimaa/tigger  # Repository where child workflows are defined
           event-type: install-maven
 
       - name: Wait for Child Workflows
