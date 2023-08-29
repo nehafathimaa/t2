@@ -21,7 +21,6 @@ jobs:
       - name: Set Maven Output
         id: maven-output
         run: |
-          echo "INSTALLED=true" >> $GITHUB_ENV
-
+          echo "::set-output name=installed::true"
     outputs:
       installed: ${{ steps.maven-output.outputs.installed }}
