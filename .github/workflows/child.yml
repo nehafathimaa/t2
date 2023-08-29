@@ -23,5 +23,5 @@ jobs:
         run: |
           echo "::set-output name=installed::true"
 
-  outputs:
-    installed: ${{ steps.maven-output.outputs.installed }}
+    outputs:
+      installed: ${{ steps.maven-output.outputs.installed }}
