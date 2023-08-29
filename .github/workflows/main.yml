@@ -24,9 +24,7 @@ jobs:
       - name: Collect Child Workflow Outputs
         id: maven
         run: |
-          echo "::set-output name=installed::${{ steps.trigger.outputs.response }}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "installed=true" > $GITHUB_ENV
 
       - name: Generate Summary Report
         run: |
