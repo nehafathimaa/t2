@@ -30,4 +30,4 @@ jobs:
       - name: Generate Summary Report
         run: |
           echo "Summary Report:"
-          echo "Maven Installed: ${{ steps.mirror.outputs.installed }}" >> $GITHUB_STEP_SUMMARY
+          echo "Maven Installed: ${{ steps.maven.outputs.installed }}" >> $GITHUB_STEP_SUMMARY
