@@ -11,6 +11,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Trigger Maven Installation Workflow
+        id: trigger
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.PAT_TOKEN }}  # Personal Access Token with appropriate permissions
@@ -24,13 +25,9 @@ jobs:
       - name: Collect Child Workflow Outputs
         id: maven
         run: |
-          echo "INSTALLED=${{ steps.trigger.outputs.response }}" >> $GITHUB_ENV
-
+         echo "Installed: ${{ steps.trigger.outputs.installed }}"
+        
       - name: Generate Summary Report
         run: |
           echo "Summary Report:"
-          if [[ "${{ env.INSTALLED }}" == "true" ]]; then
-            echo "Maven Installed: Yes" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "Maven Installed: No" >> $GITHUB_STEP_SUMMARY
-          fi
+          echo "Maven Installed: ${{ steps.mirror.outputs.installed }}" >> $GITHUB_STEP_SUMMARY
