@@ -24,9 +24,11 @@ jobs:
       - name: Collect Child Workflow Outputs
         id: maven
         run: |
-          echo "installed=true" > $GITHUB_ENV
+          echo "INSTALLED=true" >> $GITHUB_ENV
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Summary Report
         run: |
           echo "Summary Report:"
-          echo "Maven Installed: ${{ steps.maven.outputs.installed }}" >> $GITHUB_STEP_SUMMARY
+          echo "Maven Installed: ${{ env.INSTALLED }}" >> $GITHUB_STEP_SUMMARY
